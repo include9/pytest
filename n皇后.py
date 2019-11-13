@@ -11,14 +11,7 @@ def pr(L=[]):
         for arr in arr1:
             print('%3s'%arr,end='')
         print()
-    print()
-#打印棋盘1
-def pr(L=[]):
-    for arr1 in L:
-        for arr in arr1:
-            print('%3s'%arr,end='')
-        print()
-    print()    
+    print()  
 #打印棋盘2
 def pr2(L=[]):
     for arr1 in L:
@@ -31,6 +24,7 @@ def pr2(L=[]):
     print() 
 #打印结果3
 def pr3(L=[],n1=n):
+    print("answer",end=":")
     cnt=0
     for i in range(n1):
         for j in range(n1):
@@ -42,7 +36,8 @@ def pr3(L=[],n1=n):
         for j in range(n1):
             if L[i][j]==0:
                 print('%3s'%str(j+1),end='')
-    print(" -----answer\n")
+    print("\n")
+    
 #下子
 def aset(i,j,L=[([1] * n) for i in range(n)],n1=n):
     if L[i-1][j-1]!=1:
@@ -65,7 +60,7 @@ def unset(i,j,L=[([1] * n) for i in range(n)],n1=n):
          if j+i-2-ii>=0 and j+i-2-ii<=n1-1:    
              L[ii][j+i-2-ii]+=2
     L[i-1][j-1]=1
-
+#递归函数
 def k(L=[],alist=[],n1=n,n2=n):
     if n1==0:
         pr3(L,n2)
@@ -81,3 +76,11 @@ def k(L=[],alist=[],n1=n,n2=n):
             k(L1[:],alist1[:],n1-1,n2)
             unset(n1,a,L1,n2)
             alist1.append(a)
+#
+def queen(num):
+    print("-----------",num,"queen-----------")
+    L1,a=Restart(num)
+    k(L1,a,num,num)
+
+if __name__=="__main__":
+    queen(4)
